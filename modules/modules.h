@@ -3,6 +3,7 @@
 
 void printTitle();
 void startGame();
+void mainCity();
 void gameLoop();
 
 #endif 
