@@ -1,6 +1,8 @@
 #include <iostream>
+#include "modules.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    printTitle();
+
     return 0;
 }

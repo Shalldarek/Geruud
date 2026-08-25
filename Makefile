@@ -1,5 +1,5 @@
 CXX ?= g++
-CXXFLAGS ?= -std=c++17 -Wall -Wextra -Iinclude -Isrc -Idatabase
+CXXFLAGS ?= -std=c++17 -Wall -Wextra -Iinclude -Isrc -Idatabase -Imodules
 
 SRC_DIRS := src include database modules
 SOURCES := $(shell find $(SRC_DIRS) -type f -name '*.cpp')
