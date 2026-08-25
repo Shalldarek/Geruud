@@ -24,17 +24,16 @@ DataManager::~DataManager() {
 
 bool DataManager::createTable() {
     std::string sql = R"(
-
     CREATE TABLE IF NOT EXISTS main_village (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        num_of_yurts INTEGER NOT NULL,
-        num_of_people INTEGER NOT NULL,
-        num_of_warriors INTEGER NOT NULL,
-        num_of_horses INTEGER NOT NULL,
-        num_of_camp_fires INTEGER NOT NULL
+        num_of_yurts INTEGER NOT NULL DEFAULT 3,
+        num_of_people INTEGER NOT NULL DEFAULT 7,
+        num_of_warriors INTEGER NOT NULL DEFAULT 0,
+        num_of_horses INTEGER NOT NULL DEFAULT 3,
+        num_of_camp_fires INTEGER NOT NULL DEFAULT 1
     );
 
-    
+    INSERT OR IGNORE INTO main_village (id) VALUES (1);
     )";
 
     char* errMsg = nullptr;
