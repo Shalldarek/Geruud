@@ -2,5 +2,7 @@
 #define MODULES_H
 
 void printTitle();
+void startGame();
+void gameLoop();
 
 #endif 
