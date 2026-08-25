@@ -1,7 +1,13 @@
 #include <iostream>
+#include "DataManager.h"
 #include "modules.h"
 
+
 int main() {
+    DataManager dataManager("geruud.db");
+    
+    dataManager.createTable();
+
     bool isRunning = true;
     std::string input;
 
