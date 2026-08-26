@@ -5,5 +5,6 @@ void printTitle();
 void startGame();
 void mainCity();
 void gameLoop();
+void gatherPeople();
 
 #endif 

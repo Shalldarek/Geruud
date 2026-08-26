@@ -13,4 +13,7 @@ public:
 
     bool createTable();
     sqlite3* getDb();
+    int getNumberOfYurts();
+    int getNumberOfPeople();
+    int getNumberOfCampFires();
 };

@@ -1,8 +1,11 @@
 #include "modules.h"
 #include <iostream>
+#include "DataManager.h"
+#include <sqlite3.h>
 #include <unistd.h>
 
-void printTitle() {
+void printTitle()
+{
     std::cout << R"(
      ███  █████ ████  █   █ █   █ ████  
     █     █     █   █ █   █ █   █ █   █ 
@@ -12,10 +15,11 @@ void printTitle() {
     )" << std::endl;
 }
 
-void startGame() {
+void startGame()
+{
     system("clear");
     std::cout << "Starting the game." << std::endl;
-    sleep(1); 
+    sleep(1);
     system("clear");
     std::cout << "Starting the game.." << std::endl;
     sleep(2);
@@ -25,7 +29,8 @@ void startGame() {
     system("clear");
 }
 
-void mainCity() {
+void mainCity()
+{
     std::cout << R"(
             _____                 ___ 
            /_____\       o       /___\  
@@ -38,28 +43,49 @@ void mainCity() {
     std::cout << std::endl;
 }
 
-void gameLoop() {
+void gameLoop()
+{
+    DataManager dataManager("geruud.db");
     bool isRunning = true;
     std::string input;
 
-    while (isRunning) {
+    while (isRunning)
+    {
         mainCity();
-        std::cout << "Your city comprises of 3 yurts and a village campfire. There live 7 people." << std::endl;
-        std::cout << "1. Build a new yurt" << std::endl;
-        std::cout << "2. Recruit new people from the surrounding areas." << std::endl;
-        std::cout << "3. Gather horses" << std::endl;
+
+        int num_of_yurts = dataManager.getNumberOfYurts();
+        int num_of_people = dataManager.getNumberOfPeople();
+        int num_of_camp_fires = dataManager.getNumberOfCampFires();
+
+        std::cout << "Your city comprises of " << num_of_yurts << " yurts and " << num_of_camp_fires << " campfires. There live " << num_of_people << " people." << std::endl;
+        std::cout << "1. Gather people from the surrounding areas." << std::endl;
         std::cout << std::endl;
 
         std::getline(std::cin, input);
 
         if (input == "1") {
-            std::cout << "You have built a new yurt." << std::endl;
-        } else if (input == "2") {
-            std::cout << "You have recruited new people." << std::endl;
-        } else if (input == "3") {
-            std::cout << "You have gathered horses." << std::endl;
-        } else {
+            system("clear");
+            gatherPeople();
+        }
+        else
+        {
+            system("clear");
             std::cout << "Unknown command: " << input << std::endl;
         }
     }
+}
+
+void gatherPeople()
+{
+    std::cout << "Finding new people requires some time." << std::endl;
+    sleep(2);
+    system("clear");
+    std::cout << "Finding new people requires some time.." << std::endl;
+    sleep(2);
+    system("clear");
+    std::cout << "Finding new people requires some time..." << std::endl;
+    sleep(2);
+    system("clear");
+    std::cout << "You have found new people!" << std::endl;
+
 }
