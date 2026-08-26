@@ -124,3 +124,26 @@ int DataManager::getNumberOfCampFires() {
     sqlite3_finalize(stmt);
     return numOfCampFires;
 }
+
+int DataManager::addPeople(int numberOfPeople) {
+    std::string sql = "UPDATE main_village SET num_of_people = num_of_people + ? WHERE id = 1;";
+    sqlite3_stmt* stmt;
+
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        //std::cerr << "Error preparing statement: " << sqlite3_errmsg(db) << "\n";
+        return -1; 
+    }
+
+    sqlite3_bind_int(stmt, 1, numberOfPeople);
+
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        //std::cerr << "Error updating number of people: " << sqlite3_errmsg(db) << "\n";
+        sqlite3_finalize(stmt);
+        return -1; 
+    }
+
+    sqlite3_finalize(stmt);
+    return 0; 
+}

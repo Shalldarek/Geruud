@@ -3,6 +3,7 @@
 #include "DataManager.h"
 #include <sqlite3.h>
 #include <unistd.h>
+#include <random>
 
 void printTitle()
 {
@@ -77,6 +78,9 @@ void gameLoop()
 
 void gatherPeople()
 {
+    DataManager dataManager("geruud.db");
+
+    int num_of_people_found = rand() % 4 + 0; 
     std::cout << "Finding new people requires some time." << std::endl;
     sleep(2);
     system("clear");
@@ -86,6 +90,11 @@ void gatherPeople()
     std::cout << "Finding new people requires some time..." << std::endl;
     sleep(2);
     system("clear");
-    std::cout << "You have found new people!" << std::endl;
-
+    
+    if (num_of_people_found > 0) {
+        std::cout << "You have found " << num_of_people_found << " new people!" << std::endl;
+        dataManager.addPeople(num_of_people_found);
+    } else {
+        std::cout << "Unfortunately, you didn't find any new people." << std::endl;
+    }
 }
