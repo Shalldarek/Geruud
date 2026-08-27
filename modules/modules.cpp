@@ -60,6 +60,7 @@ void gameLoop()
 
         std::cout << "Your city comprises of " << num_of_yurts << " yurts and " << num_of_camp_fires << " campfires. There live " << num_of_people << " people." << std::endl;
         std::cout << "1. Gather people from the surrounding areas." << std::endl;
+        std::cout << "2. Gather horses from the surrounding areas." << std::endl;
         std::cout << std::endl;
 
         std::getline(std::cin, input);
@@ -67,6 +68,10 @@ void gameLoop()
         if (input == "1") {
             system("clear");
             gatherPeople();
+        }
+        else if (input == "2") {
+            system("clear");
+            gatherHorses();
         }
         else
         {
@@ -98,3 +103,27 @@ void gatherPeople()
         std::cout << "Unfortunately, you didn't find any new people." << std::endl;
     }
 }
+
+
+void gatherHorses() {
+    DataManager dataManager("geruud.db");
+
+    int num_of_horses_found = rand() % 4 + 0; 
+    std::cout << "Finding new horses requires some time." << std::endl;
+    sleep(2);
+    system("clear");
+    std::cout << "Finding new horses requires some time.." << std::endl;
+    sleep(2);
+    system("clear");
+    std::cout << "Finding new horses requires some time..." << std::endl;
+    sleep(2);
+    system("clear");
+    
+    if (num_of_horses_found > 0) {
+        std::cout << "You have found " << num_of_horses_found << " new horses!" << std::endl;
+        dataManager.addHorses(num_of_horses_found);
+    } else {
+        std::cout << "Unfortunately, you didn't find any new horses." << std::endl;
+    }
+}
+

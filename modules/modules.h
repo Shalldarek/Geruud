@@ -6,5 +6,6 @@ void startGame();
 void mainCity();
 void gameLoop();
 void gatherPeople();
+void gatherHorses();
 
 #endif 

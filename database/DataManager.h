@@ -17,4 +17,6 @@ public:
     int getNumberOfPeople();
     int getNumberOfCampFires();
     int addPeople(int numberOfPeople);
+    int addHorses(int numberOfHorses);
+
 };
